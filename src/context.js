@@ -29,11 +29,6 @@ const AppProvider = ({ children }) => {
 		difficulty: "easy",
 	});
 
-	const { amount, category, difficulty } = startQuiz;
-	const url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;
-	console.log(url);
-
-
 	const nextQuestion = () => {
 		setIndex((prevIndex) => {
 			const updatedIndex = prevIndex + 1;
@@ -64,7 +59,7 @@ const AppProvider = ({ children }) => {
 	};
 
 	const handleQuizChange = (e) => {
-		console.log(e.target.value);
+
 		const { name, value } = e.target;
 		setStartQuiz((prevValues) => ({ ...prevValues, [name]: value }));
 	};
@@ -74,8 +69,6 @@ const AppProvider = ({ children }) => {
     // construct our api url
 		const { amount, category, difficulty} = startQuiz;
 		const catNum = categoryTable[category];
-    console.log(`Amount ${amount}, category ${category}, difficulty ${difficulty}`)
-    console.log(`catNum is ${catNum}`)
 		const url = `${API_ENDPOINT}amount=${amount}&category=${catNum}&difficulty=${difficulty}&type=multiple`;
     // fetch!
 		const fetchQuestions = async (url) => {
@@ -89,7 +82,6 @@ const AppProvider = ({ children }) => {
 					setLoading(false);
 					setWaiting(false);
 					setError(false);
-					console.log(data);
 				} else {
 					setWaiting(true);
 					setError(true);

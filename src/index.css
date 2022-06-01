@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
 /*
 =============== 
 Variables
@@ -11,10 +13,10 @@ Variables
   --clr-primary-3: hsl(205, 72%, 37%);
   --clr-primary-4: hsl(205, 63%, 48%);
   /* primary/main color */
-  --clr-primary-5: hsl(205, 78%, 60%);
+  --clr-primary-5: hsl(195, 73%, 27%);
   /* lighter shades of primary color */
   --clr-primary-6: hsl(205, 89%, 70%);
-  --clr-primary-7: hsl(205, 90%, 76%);
+  --clr-primary-7: hsl(195, 49%, 59%);
   --clr-primary-8: hsl(205, 86%, 81%);
   --clr-primary-9: hsl(205, 90%, 88%);
   --clr-primary-10: hsl(205, 100%, 96%);
@@ -33,7 +35,7 @@ Variables
   --clr-white: #fff;
   --clr-red-dark: hsl(360, 67%, 44%);
   --clr-red-light: hsl(360, 71%, 66%);
-  --clr-green-dark: hsl(125, 67%, 44%);
+  --clr-green-dark: hsl(166, 67%, 44%);
   --clr-green-light: hsl(125, 71%, 66%);
   --clr-black: #222;
   --transition: all 0.3s linear;
@@ -84,7 +86,8 @@ h1 {
   font-size: 2.5rem;
 }
 h2 {
-  font-size: 2rem;
+  font-size: 1.75rem;
+  font-family: 'Raleway', sans-serif;
 }
 h3 {
   font-size: 1.25rem;
@@ -101,7 +104,7 @@ p {
     font-size: 3rem;
   }
   h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
   h3 {
     font-size: 1.75rem;
@@ -208,14 +211,14 @@ main {
   font-weight: 700;
   letter-spacing: var(--spacing);
   font-size: 1rem;
-  background: #ffb100;
+  background: #00ffdd;
   color: var(--clr-black);
   transition: var(--transition);
   cursor: pointer;
 }
 .next-question:hover {
-  background: #805900;
-  color: #ffb100;
+  background: #085349;
+  color: #00ffdd;
 }
 /*
 =============== 
@@ -308,7 +311,4 @@ Loading
 }
 .close-btn {
   margin-right: auto;
-}
-.red {
-  background: tomato;
 }

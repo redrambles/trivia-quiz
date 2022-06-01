@@ -23,7 +23,7 @@ const SetupForm = () => {
 					<div className='form-control'>
 						<label htmlFor='category'>Category</label>
 						<select className='form-input' name='category' id='category' value={startQuiz.category} onChange={handleQuizChange}>
-							<option value='sports' selected>sports</option>
+							<option value='sports'>sports</option>
 							<option value='history'>history</option>
 							<option value='politics'>politics</option>
 						</select>

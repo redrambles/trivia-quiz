@@ -39,7 +39,7 @@ function App() {
 					<div className='btn-container'>
 						{allAnswers.map((answer, idx) => (
 							<button
-								className={answer === correct_answer ? "red answer-btn" : "answer-btn"}
+								className="answer-btn"
 								key={idx}
                 onClick={() => verifyAnswer(answer === correct_answer)}
 								dangerouslySetInnerHTML={{ __html: answer }}
