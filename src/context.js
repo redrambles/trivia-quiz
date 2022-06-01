@@ -57,8 +57,27 @@ const AppProvider = ({ children }) => {
 
   }, [error])
 
+  const nextQuestion = () => {
+    setIndex((prevIndex) => {
+      const updatedIndex = prevIndex + 1
+      if (updatedIndex > questions.length - 1){
+        // openModal
+        return 0
+      } else {
+        return updatedIndex
+      }
+    })
+  }
 
-  return <AppContext.Provider value={{ waiting, loading, questions, index, correct, error, isModalOpen }}>{children}</AppContext.Provider>
+  const verifyAnswer = (isCorrect) => {
+    if (isCorrect){
+      setCorrect((oldTotal) => oldTotal + 1)
+    }
+    nextQuestion()
+  }
+
+
+  return <AppContext.Provider value={{ waiting, loading, questions, index, correct, error, isModalOpen, nextQuestion, verifyAnswer }}>{children}</AppContext.Provider>
 }
 // make sure use
 export const useGlobalContext = () => {

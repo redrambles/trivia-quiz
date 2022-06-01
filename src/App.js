@@ -1,45 +1,55 @@
-import React from 'react'
-import { useGlobalContext } from './context'
+import React from "react";
+import { useGlobalContext } from "./context";
 
-import SetupForm from './SetupForm'
-import Loading from './Loading'
-import Modal from './Modal'
+import SetupForm from "./SetupForm";
+import Loading from "./Loading";
+import Modal from "./Modal";
 function App() {
-  const { waiting, loading, questions, index, correct} = useGlobalContext();
+	const { waiting, loading, questions, index, correct, nextQuestion, verifyAnswer } = useGlobalContext();
 
-  if(waiting) {
-    return <SetupForm />
-  }
+	if (waiting) {
+		return <SetupForm />;
+	}
 
-  if (loading){
-    return <Loading />
-  }
+	if (loading) {
+		return <Loading />;
+	}
 
-  const {question, incorrect_answers, correct_answer} = questions[0]
+	const { question, incorrect_answers, correct_answer } = questions[index];
 
-  const allAnswers = [correct_answer, ...incorrect_answers]
-  console.log(allAnswers)
+	const shuffle = (arr) => {
+		return arr.sort(() => Math.random() - 0.5);
+	};
 
-  return (
-    <main>
-      { /* <Modal /> */}
-      <section className="quiz">
-        <p className="correct-answers">
-          correct answers : {correct}/{index}
-        </p>
-        {/* This will allow us to see the correct characters - do not use this if the user is submitting it (i.e. via form) */}
-        <article className="container">
-          <h2 dangerouslySetInnerHTML={{__html: question}} />
-          <div className="btn-container">
-          {allAnswers.map((answer, idx) => (
-            <button key={idx} className="answer-btn" dangerouslySetInnerHTML={{__html: answer}}/>
-          ))}
-          </div>
-        </article>
-      </section>
+	const allAnswers = [correct_answer, ...incorrect_answers];
 
-    </main>
-  )
+	return (
+		<main>
+			{/* <Modal /> */}
+			<section className='quiz'>
+				<p className='correct-answers'>
+					correct answers : {correct}/{index}
+				</p>
+				{/* This will allow us to see the correct characters - do not use this if the user is submitting it (i.e. via form) */}
+				<article className='container'>
+					<h2 dangerouslySetInnerHTML={{ __html: question }} />
+					<div className='btn-container'>
+						{allAnswers.map((answer, idx) => (
+							<button
+								className={answer === correct_answer ? "red answer-btn" : "answer-btn"}
+								key={idx}
+                onClick={() => verifyAnswer(answer === correct_answer)}
+								dangerouslySetInnerHTML={{ __html: answer }}
+							/>
+						))}
+					</div>
+				</article>
+				<button onClick={nextQuestion} className='next-question'>
+					Next Question
+				</button>
+			</section>
+		</main>
+	);
 }
 
-export default App
+export default App;
