@@ -31,7 +31,7 @@ function App() {
 			{<Modal />}
 			<section className='quiz'>
 				<p className='correct-answers'>
-					correct answers : {correct}/{index}
+					correct answers : {correct}/{questions.length}
 				</p>
 				{/* This will allow us to see the correct characters - do not use this if the user is submitting it (i.e. via form) */}
 				<article className='container'>
