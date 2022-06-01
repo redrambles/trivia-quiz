@@ -17,15 +17,18 @@ function App() {
 
 	const { question, incorrect_answers, correct_answer } = questions[index];
 
-	const shuffle = (arr) => {
-		return arr.sort(() => Math.random() - 0.5);
-	};
-
-	const allAnswers = [correct_answer, ...incorrect_answers];
+	// const allAnswers = [correct_answer, ...incorrect_answers];
+  let allAnswers = [...incorrect_answers];
+  // Get a random index between 0-3 to decide where to insert our correct answer
+  const randIndex = Math.floor(Math.random() * 3)
+  // Push the answer at this randomIndex position at the back of the array (which will double it)
+  allAnswers.push(allAnswers[randIndex])
+  // Now we have two incorrect answers that are the same. Replace the first one with the correct answer
+  allAnswers[randIndex] = correct_answer
 
 	return (
 		<main>
-			{/* <Modal /> */}
+			{<Modal />}
 			<section className='quiz'>
 				<p className='correct-answers'>
 					correct answers : {correct}/{index}
